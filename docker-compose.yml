@@ -1,14 +1,18 @@
 services:
-  bonsite:
-    build:
-      context: ./bonsite
-      dockerfile: Dockerfile
-    depends_on:
-      - database
-    ports:
-      - "3000:3000"
+  # bonsite:
+  #   env_file:
+  #     - .env
+  #   build:
+  #     context: ./bonsite
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - database
+  #   ports:
+  #     - "3000:3000"
 
   database:
+    env_file:
+      - .env
     build: 
       context: ./database
       dockerfile: Dockerfile

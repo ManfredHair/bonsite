@@ -6,12 +6,14 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "studio": "drizzle-kit studio"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.33.0",
     "next": "14.2.7",
+    "postgres": "^3.4.4",
     "react": "^18",
     "react-dom": "^18"
   },

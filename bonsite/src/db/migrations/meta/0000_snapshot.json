@@ -1,0 +1,189 @@
+{
+  "id": "5ee07d80-258f-4343-9da5-a9c9da5648d3",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.bonsais": {
+      "name": "bonsais",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nome": {
+          "name": "nome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "descricao": {
+          "name": "descricao",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "categoria": {
+          "name": "categoria",
+          "type": "categoria_enum",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sol": {
+          "name": "sol",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "agua": {
+          "name": "agua",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tamanho": {
+          "name": "tamanho",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "poda": {
+          "name": "poda",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "solo": {
+          "name": "solo",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "delicadeza": {
+          "name": "delicadeza",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "preco": {
+          "name": "preco",
+          "type": "numeric(6, 2)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.pedido_bonsais": {
+      "name": "pedido_bonsais",
+      "schema": "",
+      "columns": {
+        "pedido_id": {
+          "name": "pedido_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bonsai_id": {
+          "name": "bonsai_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quantidade": {
+          "name": "quantidade",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "pedido_bonsais_pedido_id_pedidos_id_fk": {
+          "name": "pedido_bonsais_pedido_id_pedidos_id_fk",
+          "tableFrom": "pedido_bonsais",
+          "tableTo": "pedidos",
+          "columnsFrom": [
+            "pedido_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "pedido_bonsais_bonsai_id_bonsais_id_fk": {
+          "name": "pedido_bonsais_bonsai_id_bonsais_id_fk",
+          "tableFrom": "pedido_bonsais",
+          "tableTo": "bonsais",
+          "columnsFrom": [
+            "bonsai_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {
+        "pedido_bonsais_pedido_id_bonsai_id_pk": {
+          "name": "pedido_bonsais_pedido_id_bonsai_id_pk",
+          "columns": [
+            "pedido_id",
+            "bonsai_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.pedidos": {
+      "name": "pedidos",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "preco_total": {
+          "name": "preco_total",
+          "type": "numeric(6, 2)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "public.categoria_enum": {
+      "name": "categoria_enum",
+      "schema": "public",
+      "values": [
+        "Frutíferas",
+        "Floríferas",
+        "Perenes",
+        "Caducifólias"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
