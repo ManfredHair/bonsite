@@ -6,6 +6,7 @@ export const bonsaiTable = pgTable('bonsai', {
     name: text('name').notNull(),
     amount: integer('amount').notNull(),
   });
+  //to search later, this is an example of drizzle orm,
 
 
 export type InsertBonsai = typeof bonsaiTable.$inferInsert;
